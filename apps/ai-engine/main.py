@@ -2,10 +2,10 @@ import os
 from fastapi import FastAPI
 from dotenv import load_dotenv
 
-from schemas import EmailAnalysisRequest, EmailAnalysisResponse, ProcessInboxRequest, ProcessInboxResponse, ProcessedEmail
-from service import AIService
-from imap_client import GmailScraper
-from text_cleaner import clean_email_body
+from core.schemas import EmailAnalysisRequest, EmailAnalysisResponse, ProcessInboxRequest, ProcessInboxResponse, ProcessedEmail
+from ai.service import AIService
+from scraper.imap_client import GmailScraper
+from scraper.text_cleaner import clean_email_body
 
 # Load environment variables
 load_dotenv()

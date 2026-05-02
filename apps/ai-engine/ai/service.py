@@ -2,7 +2,7 @@ import os
 import json
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
-from schemas import EmailAnalysisRequest, EmailAnalysisResponse
+from core.schemas import EmailAnalysisRequest, EmailAnalysisResponse
 
 class AIService:
     def __init__(self):
