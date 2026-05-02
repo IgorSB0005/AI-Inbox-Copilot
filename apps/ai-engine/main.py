@@ -41,7 +41,7 @@ def process_inbox_endpoint(request: ProcessInboxRequest):
     scraper = GmailScraper(email=request.gmail_address, app_password=request.app_password)
     
     try:
-        unread_emails = scraper.fetch_unread_emails()
+        unread_emails = scraper.fetch_unread_emails(start_datetime=request.start_datetime)
     except Exception as e:
         from fastapi import HTTPException
         raise HTTPException(status_code=500, detail=f"Failed to fetch emails: {str(e)}")
