@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
-from typing import Dict, Any, Literal, List
+from typing import Dict, Any, Literal, List, Optional
+from datetime import datetime
 
 class EmailAnalysisRequest(BaseModel):
     email_body: str = Field(..., description="The raw text content of the email.")
@@ -17,6 +18,10 @@ class EmailAnalysisResponse(BaseModel):
 class ProcessInboxRequest(BaseModel):
     gmail_address: str = Field(..., description="The Gmail address to scrape.")
     app_password: str = Field(..., description="The Gmail App Password.")
+    start_datetime: Optional[datetime] = Field(
+        default=None, 
+        description="Only process emails received after this exact timestamp (passed from Backend state)."
+    )
     user_rules: Dict[str, Any] = Field(
         default_factory=dict,
         description="JSON object containing user-defined rules."
